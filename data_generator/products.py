@@ -2,12 +2,12 @@
 import argparse
 import json
 import random
-from datetime import datetime, timedelta
+from datetime import timedelta
 from pathlib import Path
 
 from faker import Faker
 
-from config.settings import DEFAULT_PRODUCT_COUNT, SEED
+from config.settings import SEED
 
 fake = Faker()
 Faker.seed(SEED + 2)

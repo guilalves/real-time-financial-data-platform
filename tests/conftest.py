@@ -4,7 +4,6 @@ Shared pytest fixtures for unit and integration tests.
 Unit tests use a local SparkSession in local[2] mode — no external services needed.
 Integration tests require Docker services (set INTEGRATION_TESTS=1 env variable).
 """
-import os
 import pytest
 from pyspark.sql import SparkSession
 
@@ -32,10 +31,16 @@ def spark():
 @pytest.fixture
 def sample_transactions(spark):
     """A small synthetic DataFrame replicating the Silver schema."""
-    from pyspark.sql.types import (
-        DecimalType, StringType, StructField, StructType, TimestampType, BooleanType,
-    )
     from datetime import datetime
+
+    from pyspark.sql.types import (
+        BooleanType,
+        DecimalType,
+        StringType,
+        StructField,
+        StructType,
+        TimestampType,
+    )
 
     schema = StructType([
         StructField("transaction_id", StringType(), nullable=True),

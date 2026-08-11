@@ -11,7 +11,6 @@ import argparse
 import json
 import logging
 import signal
-import sys
 from collections import Counter
 
 from confluent_kafka import Consumer, KafkaError, KafkaException

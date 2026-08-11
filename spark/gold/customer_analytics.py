@@ -18,7 +18,6 @@ from pyspark.sql.window import Window
 
 from config.settings import (
     GOLD_CUSTOMER_PATH,
-    SILVER_ACCOUNTS_PATH,
     SILVER_CUSTOMERS_PATH,
     SILVER_TRANSACTIONS_PATH,
 )

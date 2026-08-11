@@ -1,6 +1,5 @@
 """Unit tests for data quality checks."""
 import pytest
-from pyspark.sql import functions as F
 
 from spark.silver.data_quality import (
     DQResult,
@@ -52,7 +51,6 @@ class TestQualityGate:
 
 class TestDataQualityWithSpark:
     def test_null_critical_fields_are_identified(self, spark, sample_transactions):
-        from pyspark.sql import functions as F
 
         CRITICAL_FIELDS = ["transaction_id", "customer_id", "account_id", "amount", "timestamp"]
         null_check = " OR ".join([f"{f} IS NULL" for f in CRITICAL_FIELDS])
