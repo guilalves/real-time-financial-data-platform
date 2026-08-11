@@ -15,10 +15,11 @@ import logging
 from datetime import datetime
 
 from delta import DeltaTable
-from pyspark.sql import DataFrame, functions as F
+from pyspark.sql import DataFrame
+from pyspark.sql import functions as F
 
 from config.settings import SILVER_TRANSACTIONS_PATH
-from spark.utils.delta_utils import table_exists, upsert_to_delta
+from spark.utils.delta_utils import table_exists
 from spark.utils.spark_session import get_spark_session
 
 logging.basicConfig(

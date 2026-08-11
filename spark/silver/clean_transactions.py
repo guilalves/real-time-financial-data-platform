@@ -12,7 +12,8 @@ import argparse
 import logging
 from datetime import datetime
 
-from pyspark.sql import DataFrame, functions as F
+from pyspark.sql import DataFrame
+from pyspark.sql import functions as F
 from pyspark.sql.types import (
     DecimalType,
     StringType,
@@ -21,8 +22,11 @@ from pyspark.sql.types import (
     TimestampType,
 )
 
-from config.settings import BRONZE_PATH, SILVER_QUARANTINE_PATH, SILVER_TRANSACTIONS_PATH
-from spark.utils.delta_utils import table_exists
+from config.settings import (
+    BRONZE_PATH,
+    SILVER_QUARANTINE_PATH,
+    SILVER_TRANSACTIONS_PATH,
+)
 from spark.utils.spark_session import get_spark_session
 
 logging.basicConfig(

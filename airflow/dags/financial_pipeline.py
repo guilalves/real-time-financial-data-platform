@@ -16,11 +16,11 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from airflow import DAG
-from airflow.exceptions import AirflowSkipException
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import BranchPythonOperator, PythonOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+
+from airflow import DAG
 
 SPARK_CONN_ID = "spark_default"
 
@@ -52,9 +52,8 @@ SPARK_SUBMIT_DEFAULTS = {
 
 def _check_bronze_freshness(**context) -> None:
     """Fail the task if the latest Bronze partition is more than 2 hours old."""
-    from pyspark.sql import functions as F
-    from spark.utils.spark_session import get_spark_session
     from config.settings import BRONZE_PATH
+    from spark.utils.spark_session import get_spark_session
 
     spark = get_spark_session("Airflow-Freshness-Check")
     try:
@@ -76,8 +75,9 @@ def _check_bronze_freshness(**context) -> None:
 def _quality_gate(**context) -> str:
     """Read DQ metrics and branch based on pass/fail status."""
     from pyspark.sql import functions as F
-    from spark.utils.spark_session import get_spark_session
+
     from config.settings import SILVER_DQ_METRICS_PATH
+    from spark.utils.spark_session import get_spark_session
 
     process_date = context["ds"]
     spark = get_spark_session("Airflow-Quality-Gate")

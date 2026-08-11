@@ -19,7 +19,7 @@ import logging
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta
 
-from pyspark.sql import DataFrame, functions as F
+from pyspark.sql import functions as F
 
 from config.settings import (
     CURRENCIES,

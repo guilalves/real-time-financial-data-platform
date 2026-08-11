@@ -18,7 +18,6 @@ from config.settings import (
     CHECKPOINT_PATH,
     KAFKA_BOOTSTRAP_SERVERS,
     KAFKA_TOPIC_TRANSACTIONS,
-    WATERMARK_DURATION,
 )
 from spark.utils.spark_session import get_spark_session
 

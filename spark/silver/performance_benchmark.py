@@ -12,9 +12,14 @@ import logging
 import time
 from dataclasses import dataclass
 
-from pyspark.sql import DataFrame, functions as F
+from pyspark.sql import DataFrame
+from pyspark.sql import functions as F
 
-from config.settings import SILVER_ACCOUNTS_PATH, SILVER_CUSTOMERS_PATH, SILVER_TRANSACTIONS_PATH
+from config.settings import (
+    SILVER_ACCOUNTS_PATH,
+    SILVER_CUSTOMERS_PATH,
+    SILVER_TRANSACTIONS_PATH,
+)
 from spark.utils.spark_session import get_spark_session
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] — %(message)s")

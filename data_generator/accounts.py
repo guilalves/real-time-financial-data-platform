@@ -2,7 +2,7 @@
 import argparse
 import json
 import random
-from datetime import datetime, timedelta
+from datetime import timedelta
 from pathlib import Path
 
 from faker import Faker

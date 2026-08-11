@@ -1,6 +1,6 @@
 """Unit tests for Silver transformations — cleaning and deduplication logic."""
-import pytest
 from decimal import Decimal
+
 from pyspark.sql import functions as F
 
 from spark.silver.clean_transactions import (
@@ -49,10 +49,16 @@ class TestCleanTransactions:
 
     def test_unknown_currency_mapped_to_unknown(self, spark, spark_session=None):
         """Currency not in the known list should be mapped to 'UNKNOWN'."""
-        from pyspark.sql.types import (
-            DecimalType, StringType, StructField, StructType, TimestampType, BooleanType,
-        )
         from datetime import datetime
+
+        from pyspark.sql.types import (
+            BooleanType,
+            DecimalType,
+            StringType,
+            StructField,
+            StructType,
+            TimestampType,
+        )
 
         schema = StructType([
             StructField("transaction_id", StringType()),
@@ -93,10 +99,16 @@ class TestDeduplication:
 
     def test_dedup_keeps_latest_by_ingestion_timestamp(self, spark):
         """When two rows share a transaction_id, keep the most recent ingestion."""
-        from pyspark.sql.types import (
-            DecimalType, StringType, StructField, StructType, TimestampType, BooleanType,
-        )
         from datetime import datetime
+
+        from pyspark.sql.types import (
+            BooleanType,
+            DecimalType,
+            StringType,
+            StructField,
+            StructType,
+            TimestampType,
+        )
 
         schema = StructType([
             StructField("transaction_id", StringType()),
